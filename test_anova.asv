@@ -1,0 +1,54 @@
+function p = test_anova(param)
+% TEST_ANOVA(param) for different ANOVA tests
+%
+% *Input-*
+% param: 7 for acceptance, 4 for rt
+%
+% *Output-*
+% p = probab vals returned by ANOVAN
+
+% WITHOUT NORMALIZATION
+
+load('subjectwiseBehavData_mod.mat', 'subjwisedat');
+dat = behavDataSummary(subjwisedat, param);
+n_subj = length(subjwisedat);
+emotions = 1:3; offers = 2:4;
+dat_extended_list = zeros(1, 3*n_subj);
+
+% TWO-WAY ANOVA for unbalanced---------------------------------------------
+
+% grp_subj = zeros(1, 9*n_subj);
+% grp_emot = repmat([1 1 1 2 2 2 3 3 3], 1, n_subj);
+% grp_off = repmat([2 3 4], 1, 3*n_subj);
+
+% k = 1;
+% for subj = 1:n_subj
+%     grp_subj(subj:subj+9-1) = subj;
+%     for emot = emotions
+%         for off = offers
+%             key = 10*emot + off;
+%             temp = dat{subj}{key};
+%             dat_extended_list(k) = sum(temp == 1)/length(temp);
+%             k = k + 1;
+%         end
+%     end
+% end
+% 
+% p = anovan(dat_extended_list', {grp_emot grp_off}, ...
+%     'model', "interaction", 'varnames', {'grp_emot', ...
+%     'grp_off'});
+
+% ONE-WAY ANOVA for different offers---------------------------------------
+
+grp_subj = zeros(1, 3*n_subj);
+grp_emot = repmat([1 2 3], 1, n_subj);
+
+k = 1; offers = 2; j = 1;
+for subj = 1:n_subj
+    grp_subj(k:k+2) = subj; k = k + 3;
+    for emot = emotions
+        key = 10*emot + offers;
+        
+        dat_extended_list(j) = sum()
+    end
+end
