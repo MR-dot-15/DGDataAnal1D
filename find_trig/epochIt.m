@@ -1,6 +1,7 @@
 function [epoching_index, dur] = epochIt(dat)
     % image starting
-    start_ind = 1;
+    % (index of rt_i in dt) - 1
+    start_ind = 6;
 
     % first row is col index
     % trigger column 33
@@ -20,8 +21,10 @@ function [epoching_index, dur] = epochIt(dat)
     t_stamps = t_stamps(trig == 4) + 1;
     
     % img presentation; trigger no-
-    % 3rd...7th... so on, including the block trigger
+    % 3rd...7th... so on
     img_stamps = t_stamps(start_ind:4:end);
+        %img_stamps = [t_stamps(3) img_stamps]; 
+        % <-- two triggers got merged (chw6)
 
     % epoch matrix
     % freq is supposed to be 512
