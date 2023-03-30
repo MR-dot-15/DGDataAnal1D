@@ -1,7 +1,7 @@
 function [epoching_index, dur] = epochIt(dat)
     % image starting
     % (index of rt_i in dt) - 1
-    start_ind = 6;
+    start_ind = 4;
 
     % first row is col index
     % trigger column 33
